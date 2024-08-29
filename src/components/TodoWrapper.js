@@ -7,6 +7,7 @@ uuidv4();
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
 
+  // addTodo
   const addTodo = (todo) => {
     setTodos([
       ...todos,
@@ -15,6 +16,7 @@ export const TodoWrapper = () => {
     console.log(todos);
   };
 
+  // toggleComplete
   const toggleComplete = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -23,6 +25,7 @@ export const TodoWrapper = () => {
     );
   };
 
+  // deleteTodo
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -32,7 +35,12 @@ export const TodoWrapper = () => {
       <h1>Get Things Done!</h1>
       <TodoForm addTodo={addTodo} />
       {todos.map((todo, index) => (
-        <Todo task={todo} key={index} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
+        <Todo
+          task={todo}
+          key={index}
+          toggleComplete={toggleComplete}
+          deleteTodo={deleteTodo}
+        />
       ))}
     </div>
   );
